@@ -3,7 +3,7 @@
 
 Traditional High Performance Computing centers are typically Unix/Linux-based, distributed, shared, Slurm environments. Users schedule resources in the form of a number of abstract "nodes" that represent independent CPU, memory and sometimes GPU units. This environment works perfectly well for many bioinformatic projects: the dependencies are older, established applications, they have minimal graphical display needs, and the lack of dedicated hardware doesn't pose a problem. For applications like [Nextstrain](https://nextstrain.org/) that depend on graphical display, a local web server, Nodejs, and Docker, a dedicated local machine or cloud hosting (Google Cloud, AWS etc) is much easier to accomodate.
 
-If you don't have the option to install Nextstrain on a local machine, cloud host, or another dedicated environment, however, a traditional HPC environment will work just as well with some adjustments. And it comes with learning how to use Snakemake, which is a useful tool for orchestrating complex jobs particularly on a distributed HPC environment.
+If you don't have the option to install Nextstrain on a local machine, cloud host, or another dedicated environment, however, a traditional HPC environment will work just as well with some adjustments. And it comes with learning how to use Snakemake, which is a useful tool for orchestrating complex jobs.
 
 #### Assumptions about your environment:
 
