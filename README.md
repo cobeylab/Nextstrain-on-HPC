@@ -5,16 +5,16 @@ Traditional High Performance Computing centers are typically Unix/Linux-based, d
 
 If you don't have the option to install Nextstrain on a local machine, cloud host, or another dedicated environment, however, a traditional HPC environment will work just as well with some adjustments. And it comes with learning how to use Snakemake, which is a useful tool for orchestrating complex jobs particularly on a distributed HPC environment.
 
-#### Assumptions:
+#### Assumptions about your environment:
 
-  * Docker is not allowed. Docker requires root access so many HPCs don't allow it due to security concerns.
+  * Docker is not allowed. (Docker requires root access so many HPC centers don't allow it due to security concerns.)
   * Nodejs is less well-supported, and running a browser and local web server won't work.
-  * The scheduler is Slurm.
+  * The scheduler is Slurm. (sbatch files, `srun` etc)
   * (Optionally) Singularity is supported.
 
-The Nextstrain suite is composed of the nextstrain command line interface, Augur, Auspice, and a short list of standard applications like mafft and iqtree. Nextstrain CLI and Augur are Python applications. Most HPCs should support specific versions of Python, which is all you need since their dependencies can be installed in a personal virtual environment.
+The Nextstrain suite is composed of the `nextstrain` command line interface, Augur, Auspice, and a short list of standard applications like mafft and iqtree. Nextstrain CLI and Augur are Python applications. Most centers should support specific versions of Python, which is all you need since their dependencies can be installed in a personal virtual environment.
 
-Auspice depends on Nodejs and running a web server, which is common and well-supported on local machines or cloud services, but usually not allowed on higher security, shared environments. This is just as well since the data needed for an Auspice visualization can be transferred to another machine for viewing.
+Auspice depends on Nodejs and running a web server, which is common and well-supported on local machines or cloud services, but usually not allowed on higher security, shared environments. However, the data needed for an Auspice visualization can be transferred to another machine for viewing.
 
 The standard bioinformatics tools such as mafft and iqtree are relatively easy to install even if your HPC doesn't provide them, which it generally will. We'll assume the worst case scenario for Python, mafft, and iqtree in case they're not available. Loading some of these with `module load python/3.6` or `module load mafft` should be equivalent if they're available.
 
@@ -64,7 +64,7 @@ mkdir bin
 cp iqtree-2.0.6-Linux/bin/iqtree2 bin/
 ```
 
-_Note: ~/bin is a standard binary directory for Midway. `.bashrc` should already be adding it to your PATH. If you use Z shell, you may need to copy the .bashrc lines over._
+_Note: This assumes ~/bin is a standard binary directory and on your path. It may not be for some environments._
 
 6. Run snakemake on a Nextstrain job. Parameters are for a small job with three nodes. The `-A` parameter will need to be modified, and may be `-P` for partition in your environment.
 
